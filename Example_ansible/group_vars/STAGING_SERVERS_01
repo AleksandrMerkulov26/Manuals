@@ -1,0 +1,7 @@
+
+---
+ansible_connection : ssh
+ansible_user       : test
+ansible_password   : a
+environment        : PRODUCTION
+owner              : Alexander

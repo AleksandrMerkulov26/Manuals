@@ -1,0 +1,15 @@
+---
+# tasks file for deploy_apache_web
+- name: Check and print version Linux
+  debug: var="ansible_os_family"
+
+- block:
+
+  - name: Install Apache2
+    apt: name=apache2 state=present
+
+  - name: Start web service Apache2
+    service: name=apache2 state=started enabled=yes
+    when: ansible_os_family == "Debian"
+- name: Generation index.html file
+  template: src=index.j2 dest={{ destin_folder }}/index.html

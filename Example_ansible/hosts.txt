@@ -1,0 +1,12 @@
+[STAGING_SERVERS_01]
+test ansible_host=10.0.2.20 owner=Alexander
+
+[STAGING_SERVERS_02]
+test2 ansible_host=10.0.2.6 owner=Alexander
+
+[MASTER_SERVER]
+alexander ansible_host=10.0.2.5 owner=Alexander
+
+[ALL_SERVERS:children]
+STAGING_SERVERS_01	
+STAGING_SERVERS_02

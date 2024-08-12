@@ -1,0 +1,37 @@
+
+---
+- name: My three playbook
+  hosts: all
+  become: yes
+
+
+  vars:
+    message1: Privet
+    message2: World
+    message3: Slovo
+
+  tasks:
+  - name: Print Slovo
+    debug:
+      var: message3
+
+  - debug:
+      msg: "Arbuz: {{ message3 }}"
+
+  - debug:
+      msg: "Vladelec servera {{ owner }}"
+
+  - set_fact: full_message="{{message1}}{{message2}} from {{owner}}"
+
+  - debug:
+      var: full_message
+
+  - debug:
+      var:  ansible_distribution
+
+  - shell: uptime
+    register: results
+
+  - debug:
+      var: results.stdout
+

@@ -1,0 +1,11 @@
+- name: Remove default Apache Web Server
+  hosts: all
+  become: yes
+
+  tasks:
+  - name: Remove Apache WebServer
+    apt:  name=apache2 state=absent
+
+  - name: Create playbook by using playbook
+    import_tasks: playbook81.yml
+
