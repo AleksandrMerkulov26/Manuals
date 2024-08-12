@@ -1,0 +1,38 @@
+#Выполняем базовое обновление пакетов
+sudo apt-get update 
+#устанавливаем необходимые зависимости
+sudo apt-get install -y curl openssh-server ca-certificates tzdata perl
+#Установка Postfix.Во время инсталляции программы в открывшемся окне необходимо выбрать «Интернет-сайт». Далее указываем домен сервера  testgitlab.tw1.su (пример)
+sudo apt-get install -y postfix
+
+#Установка GitLab
+cd /tmp
+curl -LO https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh
+#Выполнение скрипта.
+sudo bash /tmp/script.deb.sh
+#Как только скрипт завершит работу можно начинать установку GitLab:
+sudo apt install gitlab-ce
+
+#Настройка брандмауэра
+sudo ufw status
+sudo ufw allow http
+sudo ufw allow https
+
+#Шаг 4. Настройка файла конфигурации
+
+sudo nano /etc/gitlab/gitlab.rb
+external_url 'http/s://my-domain.host'
+letsencrypt['contact_emails'] = ['my-email@my-domain.host'] # This should be an array of email addresses to add as contacts
+# Применение конфига.
+
+sudo gitlab-ctl reconfigure.
+
+#Добавление ДНС записи
+sudo nano /etc/resolv.conf
+
+#Добавление ДНС записи в Windows
+C:\Windows\System32\drivers\etc\hosts
+
+Первый вход
+Имя пользователя: root
+Получение пароля: $ sudo cat /etc/gitlab/initial_root_password
