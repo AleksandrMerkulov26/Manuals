@@ -6,12 +6,12 @@ pipeline {
     agent {
         label 'main'
     }
-    option {
+    options {
         buildDiscarder(logRotator(numToKeepStr: '10', artifacNumToKeepStr: '10'))
         timestamps()
     }
     stages {
-        stages("Preparations") {
+        stage("First step") {
             steps {
                 sh 'ssh test.localhost \'hostname\''
             }
