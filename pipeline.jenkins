@@ -1,5 +1,5 @@
 #!groovy
-// Check test.localhost properties
+// Check test properties
 properties([disableConcurrentBuilds()])
 
 pipeline {
@@ -18,5 +18,3 @@ pipeline {
         }
     }
 }
-
-
